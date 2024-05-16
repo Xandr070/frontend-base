@@ -106,3 +106,90 @@ header {
     display: flex;
     flex-direction: row;
 }
+
+.content {
+    margin: 32px;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-content {
+    margin-right: 32px;
+}
+
+.post {
+    background-color: #ffffff;
+}
+
+.post-img {
+    margin-top: 56px;
+    margin-left: 32px;
+}
+
+.comment-title img {
+    margin: 0 0 0 32px;
+}
+
+.comment-title a {
+    align-items: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: #5095ec;
+    display: block;
+}
+
+.comment-title {
+    display: flex;
+    align-items: center;
+}
+
+.comment-title img {
+    margin-right: 8px; /* Отступ между изображением и текстом */
+}
+
+.comment-title .person {
+    margin-right: 4px; /* Отступ между именем и "commented" */
+}
+
+.comment-title .commented {
+    font-size: 14px;
+    color: #505050;
+}
+
+.comment {
+    display: flex;
+    flex-direction: row;
+    margin-right: 32px;
+    padding-bottom: 16px;
+    margin-left: 32px;
+    font-size: 14px;
+    color: #505050;
+}
+
+.post-comment a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    text-decoration: none;
+    color: #505050;
+}
+
+.post-comment img {
+    margin-right: 8px;
+}
+
+.view-comment {
+    display: flex;
+    flex-direction: row;
+    margin-left: 32px;
+    padding-bottom: 32px;
+}
+
+.view {
+    font-size: 16px;
+    color: #505050;
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+}
