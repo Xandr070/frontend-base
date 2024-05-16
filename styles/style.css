@@ -226,3 +226,38 @@ header {
 .inf {
     color: #8f8f8f;
 }
+
+.other-post {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    margin-top: 32px;
+    background-color: #ffffff;
+}
+
+.right-other-post {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.right-other-post img {
+    margin-left: 16px;
+    margin-right: 8px;
+}
+
+.right-other-post span {
+    color: #505050;
+}
+
+.left-other-post {
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 32px;
+    color: #505050;
+    align-items: center;
+}
