@@ -124,6 +124,7 @@ header {
 .post-img {
     margin-top: 56px;
     margin-left: 32px;
+    margin-right: 32px;
 }
 
 .comment-title img {
@@ -260,4 +261,36 @@ header {
     margin-left: 32px;
     color: #505050;
     align-items: center;
+}
+
+.profile {
+    text-align: center;
+    padding: 32px 64px;
+    background-color: #ffffff;
+}
+
+.sociality {
+    justify-content: center;
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #505050;
+}
+
+.description {
+    color: #8f8f8f;
+    margin-top: 0px;
+}
+
+.name {
+    margin-bottom: 8px;
+    margin-top: 0px;
+    font-size: 18px;
 }
