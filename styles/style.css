@@ -193,3 +193,36 @@ header {
     align-items: center;
     margin-right: 32px;
 }
+
+.view img {
+    margin-right: 8px;
+}
+
+.com-comment a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    text-decoration: none;
+    color: #505050;
+}
+
+.com-comment img {
+    margin-right: 8px;
+}
+
+.txt p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.com {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.inf {
+    color: #8f8f8f;
+}
