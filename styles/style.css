@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 header {
     background-color: #ffffff;
     padding: 10px;
@@ -28,6 +29,7 @@ header {
     display: flex;
     align-items: center;
     text-decoration: none;
+    font-weight: 500;
     color: #505050;
 }
 
@@ -36,6 +38,7 @@ header {
 }
 
 .header-left span {
+    font-weight: 400;
     font-size: 18px;
     color:#505050
 }
@@ -65,7 +68,7 @@ header {
 }
 
 .navigation-bar {
-    margin-top: 1px;
+    margin-top: 2px;
     background-color: #fafafa;
     display: flex;
     justify-content: space-between;
@@ -110,6 +113,7 @@ header {
 .content {
     margin: 32px;
     display: flex;
+    justify-content: center;
     flex-direction: row;
 }
 
@@ -119,17 +123,18 @@ header {
 
 .post {
     background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .post-img {
-    margin-top: 56px;
-    margin-left: 32px;
-    margin-right: 32px;
+    height: auto;
+    max-width: 100%;
 }
 
-.comment-title img {
-    margin: 0 0 0 32px;
-}
 
 .comment-title a {
     align-items: center;
@@ -139,17 +144,18 @@ header {
     display: block;
 }
 
+
 .comment-title {
     display: flex;
     align-items: center;
 }
 
 .comment-title img {
-    margin-right: 8px; /* Отступ между изображением и текстом */
+    margin-right: 8px;
 }
 
 .comment-title .person {
-    margin-right: 4px; /* Отступ между именем и "commented" */
+    margin-right: 4px;
 }
 
 .comment-title .commented {
@@ -161,8 +167,7 @@ header {
     display: flex;
     flex-direction: row;
     margin-right: 32px;
-    padding-bottom: 16px;
-    margin-left: 32px;
+    margin-bottom: 16px;
     font-size: 14px;
     color: #505050;
 }
@@ -183,8 +188,11 @@ header {
 .view-comment {
     display: flex;
     flex-direction: row;
-    margin-left: 32px;
     padding-bottom: 32px;
+}
+
+.line {
+    height: 100%;
 }
 
 .view {
@@ -386,3 +394,118 @@ header {
 .title img {
     margin-right: 0;
 }
+
+.share {
+    margin-top: 32px;
+    padding-bottom: 16px;
+    background-color: #ffffff;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.input-field input {
+    height: 88px;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 100%;
+    border: 1px solid #d3d8de;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.save {
+    margin-top: 8px;
+    margin-right: 16px;
+    margin-bottom: 0;
+    margin-left: 16px;
+}
+
+.share button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: #5095ec;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-field input::placeholder {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .content {
+        flex-direction: column-reverse;
+    }
+
+    .header-left,
+    .header-right {
+        margin-top: 16px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .header-button-box {
+        margin-right: 16px;
+    }
+
+    .header-button-box:last-child {
+        margin-right: 0;
+    }
+
+    .post img {
+        max-width: 100%;
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .navigation-bar-left,
+    .navigation-bar-right {
+        display: flex;
+        justify-content: center;
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .navigation-bar-right {
+        margin-right: 0;
+    }
+
+    .navigation-bar-left {
+        margin-left: 0;
+    }
+
+    .navigation-bar {
+        flex-direction: column;
+    }
+
+    .left-content {
+        margin-top: 32px;
+        margin-right: 0;
+    }
+
+    .view-comment img {
+        margin-right: 8px;
+    }
+
+    .comment-title img{
+        margin-left: 32px;
+        margin-right: 0;
+    }
+}
+
