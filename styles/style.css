@@ -39,3 +39,27 @@ header {
     font-size: 18px;
     color:#505050
 }
+
+.header-button-box {
+    margin-right: 32px;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 8px;
+    margin-inline: auto;
+}
+
+.header-right a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #505050;
+}
