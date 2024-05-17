@@ -110,7 +110,7 @@ header {
     flex-direction: row;
 }
 
-.content {
+.content-box {
     margin: 32px;
     display: flex;
     justify-content: center;
@@ -442,9 +442,110 @@ header {
     left: 16px;
 }
 
+.basic-map {
+    margin-left: 32px;
+    margin-right: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.left-basic-map {
+    font-size: 16px;
+    color: #505050;
+}
+
+.right-basic-map {
+    display: flex;
+    gap: 8px;
+}
+
+#map-container {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 16px;
+    padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin: 32px;
+    height: 70%;
+}
+
+.paper {
+    position: relative;
+    margin-top: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+#preloader {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.loader {
+    border: 4px solid #f3f3f3; /* серый цвет */
+    border-top: 4px solid #505050; /* синий цвет */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite; /* анимация вращения */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#timer-container {
+    color: #505050;
+    font-size: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Изменено на flex-start для выравнивания слева */
+    background-color: white;
+    margin: 32px;
+}
+
+
+.basic-timer {
+    margin-right: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.left-basic-timer {
+    color: #505050;
+    font-size: 16px;
+}
+
+.right-basic-timer {
+    display: flex;
+    gap: 8px;
+}
+
+
 @media only screen and (max-width: 1024px) {
 
-    .content {
+    .content-box {
         flex-direction: column-reverse;
     }
 
