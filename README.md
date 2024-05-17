@@ -26,6 +26,10 @@ Figma (нужно авторизоваться, чтобы видеть инфо
 
 Проверяемые навыки: знание html и css, работа с git
 
+## link
+
+https://xandr070.github.io/frontend-base/
+
 ## Макеты
 
 # Desktop
