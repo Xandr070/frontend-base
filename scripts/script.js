@@ -64,7 +64,7 @@ function loadYandexMapAPI() {
         initMap();
     } else {
         var script = document.createElement("script");
-        script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=YOUR_API_KEY";
+        script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29c2d6f1-d9c0-4b3f-a77b-857f71b0aa9f";
         script.onload = initMap;
         document.body.appendChild(script);
     }
@@ -87,8 +87,7 @@ function initMap() {
         });
 
         var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            hintContent: 'Custom placemark',
-            balloonContent: 'This is a beautiful placemark'
+            balloonContent: 'Место жительства'
         }, {
             iconLayout: 'default#image',
             iconImageSize: [30, 42],
