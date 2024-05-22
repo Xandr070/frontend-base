@@ -449,7 +449,12 @@ header {
 
 #map-container {
     background-color: #ffffff;
-    margin-top: 32px;
+    margin: 32px;
+}
+
+#timer {
+    color: #505050;
+    margin: 0;
 }
 
 @media only screen and (max-width: 1024px) {
