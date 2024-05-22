@@ -112,22 +112,24 @@ header {
 
 .content-box {
     margin: 32px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
 }
 
 .left-content {
-    margin-right: 32px;
+    padding-right: 32px;
+}
+
+.right-content {
+    padding-left: 0;
+}
+
+.post, .other-post, .profile, .settings, .share {
+    background-color: #ffffff;
 }
 
 .post {
-    background-color: #ffffff;
     position: relative;
     overflow: hidden;
-    padding-top: 56px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 56px 32px 0 32px;
 }
 
 .post-img {
@@ -135,15 +137,16 @@ header {
     max-width: 100%;
 }
 
+.line {
+    border-left: 2px solid #D3D8DE;
+    margin-right: 8px;
+}
 
 .comment-title a {
-    align-items: center;
     font-size: 14px;
     text-decoration: none;
     color: #5095ec;
-    display: block;
 }
-
 
 .comment-title {
     display: flex;
@@ -163,7 +166,12 @@ header {
     color: #505050;
 }
 
+.commented {
+    margin-bottom: 0;
+}
+
 .comment {
+    margin-top: 16px;
     display: flex;
     flex-direction: row;
     margin-right: 32px;
@@ -172,64 +180,36 @@ header {
     color: #505050;
 }
 
-.post-comment a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 16px;
-    text-decoration: none;
-    color: #505050;
-}
-
-.post-comment img {
-    margin-right: 8px;
-}
-
 .view-comment {
     display: flex;
     flex-direction: row;
     padding-bottom: 32px;
 }
 
-.line {
-    height: 100%;
-}
-
-.view {
-    font-size: 16px;
-    color: #505050;
-    display: flex;
-    align-items: center;
-    margin-right: 32px;
-}
-
-.view img {
+.view img, .com-comment img, .img {
     margin-right: 8px;
 }
 
-.com-comment a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.view, .com-comment a {
     font-size: 16px;
     text-decoration: none;
     color: #505050;
+    display: flex;
+    align-items: center;
 }
 
-.com-comment img {
-    margin-right: 8px;
+.view {
+    margin-right: 32px;
 }
 
 .txt p {
-    margin-top: 0;
-    margin-bottom: 16px;
+    margin: 0 0 16px;
 }
 
 .com {
     margin-left: 8px;
     display: flex;
     flex-direction: column;
-    margin-top: 0;
 }
 
 .inf {
@@ -241,21 +221,13 @@ header {
     display: flex;
     flex-direction: row;
     margin-top: 32px;
-    background-color: #ffffff;
 }
 
 .right-other-post {
-    margin-top: 16px;
-    margin-bottom: 16px;
     display: flex;
     flex-direction: row;
+    gap: 16px;
     align-items: center;
-    margin-right: 32px;
-}
-
-.right-other-post img {
-    margin-left: 16px;
-    margin-right: 8px;
 }
 
 .right-other-post span {
@@ -263,30 +235,22 @@ header {
 }
 
 .left-other-post {
-    display: flex;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    margin-left: 32px;
+    margin: 16px 0 16px 32px;
     color: #505050;
     align-items: center;
 }
 
 .profile {
-    text-align: center;
-    padding: 32px 64px;
-    background-color: #ffffff;
+    padding: 32px;
 }
 
 .sociality {
-    justify-content: center;
     display: flex;
+    justify-content: center;
     gap: 8px;
-    flex-direction: row;
 }
 
 .profile-info {
-    display: flex;
-    flex-direction: column;
     margin-top: 16px;
     font-size: 14px;
     color: #505050;
@@ -294,20 +258,17 @@ header {
 
 .description {
     color: #8f8f8f;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .name {
-    margin-bottom: 8px;
-    margin-top: 0px;
+    margin: 0 0 8px;
     font-size: 18px;
 }
 
 .title {
     display: flex;
-    padding: 8px 16px;
     font-size: 14px;
-    flex-direction: row;
     color: #505050;
     justify-content: space-between;
     align-items: center;
@@ -316,7 +277,6 @@ header {
 
 .settings {
     margin-top: 32px;
-    background-color: #ffffff;
 }
 
 .main {
@@ -325,25 +285,15 @@ header {
 
 .navigation-button-settings {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-.navigation-button-settings:last-child {
-    padding-bottom: 16px;
 }
 
 .navigation-button-settings a {
-    align-items: center;
     font-size: 14px;
     text-decoration: none;
     color: #505050;
     display: flex;
-    flex-direction: row;
+    align-items: center;
 }
 
 .balance {
@@ -351,82 +301,46 @@ header {
     color: #8f8f8f;
 }
 
-.main .base {
+.main .base, .last .base {
     height: 16px;
     width: 24px;
     display: flex;
-    border: 1px solid transparent;
-    border-radius: 8px;
     align-items: center;
     justify-content: center;
+    border-radius: 8px;
+}
+
+.main .base {
     background: #e33939;
 }
 
 .last .base {
-    height: 16px;
-    width: 24px;
-    display: flex;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
     background: #47b091;
 }
 
-.main .noti_count {
+.main .noti_count, .last .noti_count {
     color: #ffffff;
     font-size: 12px;
 }
 
-.last .noti_count {
-    color: #ffffff;
-    font-size: 12px;
-}
-
-.settings a {
-    background-color: #ffffff;
-}
-
-.settings img {
+.settings img, .title img {
     margin-right: 16px;
-}
-
-.title img {
-    margin-right: 0;
 }
 
 .share {
     margin-top: 32px;
     padding-bottom: 16px;
-    background-color: #ffffff;
 }
 
-.input-field {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-}
-
-.input-field input {
+.form-control {
     height: 88px;
-    margin-left: 16px;
-    margin-right: 16px;
-    width: 100%;
-    border: 1px solid #d3d8de;
-    border-radius: 4px;
-    padding-left: 8px;
 }
 
 .save {
-    margin-top: 8px;
-    margin-right: 16px;
-    margin-bottom: 0;
-    margin-left: 16px;
+    margin: 8px 16px 0;
 }
 
 .share button {
-    display: block;
     width: 100%;
     padding: 8px;
     background: #5095ec;
@@ -457,7 +371,7 @@ header {
     margin: 0;
 }
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
 
     .content-box {
         flex-direction: column-reverse;
@@ -510,7 +424,6 @@ header {
     }
 
     .left-content {
-        margin-top: 32px;
         margin-right: 0;
     }
 
@@ -522,5 +435,5 @@ header {
         margin-left: 32px;
         margin-right: 0;
     }
-}
+} */
 
