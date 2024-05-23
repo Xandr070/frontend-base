@@ -22,11 +22,12 @@ body {
     margin-inline: auto;
 }
 
-.header-button-box a {
+.header-button-box a, .header-button-box div {
     display: flex;
     flex-direction: column;
     text-decoration: none;
     color: #505050;
+    align-items: center;
 }
 
 .navigation-bar {

@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             link.addEventListener('click', event => {
                 event.preventDefault();
                 const page = event.currentTarget.getAttribute('data-page');
-                history.pushState({ page }, '', `#${page}`);
+                history.pushState({ page }, '', `/${page}`);
                 loadPage(page);
             });
         });
 
-        const initialPage = location.hash.replace('#', '') || 'resume';
+        const initialPage = location.pathname.replace('/', '') || 'resume';
         loadPage(initialPage);
     }
 
@@ -69,7 +69,6 @@ function loadYandexMapAPI() {
         document.body.appendChild(script);
     }
 }
-
 
 function initMap() {
     const mapElement = document.getElementById('map');
