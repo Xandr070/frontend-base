@@ -5,34 +5,6 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #ffffff;
-    padding: 10px;
-    display: flex;
-    font-size: 14px;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.header-left {
-    margin-left: 32px;
-    display: flex;
-    align-items: center;
-}
-
-.header-left a {
-    margin-right: 20px;
-}
-
-.header-left .back-button {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: 500;
-    color: #505050;
-}
-
 .header-left .back-button img {
     margin-right: 5px;
 }
@@ -40,27 +12,17 @@ header {
 .header-left span {
     font-weight: 400;
     font-size: 18px;
-    color:#505050
+    color: #505050;
 }
 
-.header-button-box {
-    margin-right: 32px;
-    align-items: center;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-.header-right img {
+.header-button-box img {
     height: 24px;
     width: 24px;
     margin-bottom: 8px;
     margin-inline: auto;
 }
 
-.header-right a {
+.header-button-box a {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -68,46 +30,21 @@ header {
 }
 
 .navigation-bar {
-    margin-top: 2px;
+    margin-top: 1px;
     background-color: #fafafa;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.navigation-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 16px;
-    margin-bottom: 10px;
-}
-
-.navigation-button a {
-    align-items: center;
-    font-size: 14px;
-    text-decoration: none;
-    color: #505050;
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
 }
 
 .navigation-button img {
     margin-right: 8px;
 }
 
-.navigation-bar-left {
-    margin-left: 32px;
+.navigation-button a {
     display: flex;
     flex-direction: row;
-}
-
-.navigation-bar-right {
-    margin-right: 32px;
-    display: flex;
-    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: #505050;
 }
 
 .content-box {
@@ -196,10 +133,6 @@ header {
     color: #505050;
     display: flex;
     align-items: center;
-}
-
-.view {
-    margin-right: 32px;
 }
 
 .txt p {
