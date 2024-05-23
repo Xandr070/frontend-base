@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             link.addEventListener('click', event => {
                 event.preventDefault();
                 const page = event.currentTarget.getAttribute('data-page');
-                history.pushState({ page }, '', `/${page}`);
+                history.pushState({ page }, '', `#${page}`);
                 loadPage(page);
             });
         });
 
-        const initialPage = location.pathname.replace('/', '') || 'resume';
+        const initialPage = location.hash.replace('#', '') || 'resume';
         loadPage(initialPage);
     }
 

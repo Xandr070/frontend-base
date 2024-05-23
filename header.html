@@ -8,28 +8,28 @@
 <body>
     <header class="d-flex justify-content-between align-items-center bg-white p-2 shadow-sm">
         <div class="header-left d-flex align-items-center ms-3">
-            <div class="back-button d-flex align-items-center text-decoration-none text-dark me-2">
-                <img src="img/Back Outline.svg" alt="Back" />
-                <span>User Pages</span>
+            <div class="d-flex align-items-center text-decoration-none text-dark me-2">
+                <img class="back-button" src="img/Back Outline.svg" alt="Back" />
+                <span class="tab">User Pages</span>
             </div>
             <span>Profile</span>
         </div>
         <div class="header-right d-flex align-items-center">
             <div class="header-button-box me-4">
-                <div data-page="statistics">
-                    <img src="img/Chart Outline.svg" alt="Statistic" />
+                <div class="header-right-button">
+                    <img class="header-button-box-img" src="img/Chart Outline.svg" alt="Statistic" />
                     <span>Statistics</span>
                 </div>
             </div>
             <div class="header-button-box me-4">
-                <div data-page="invoices">
-                    <img src="img/Calculate Outline.svg" alt="Invoices" />
+                <div class="header-right-button">
+                    <img class="header-button-box-img" src="img/Calculate Outline.svg" alt="Invoices" />
                     <span>Invoices</span>
                 </div>
             </div>
             <div class="header-button-box me-4">
-                <div data-page="schedule">
-                    <img src="img/Receipt Outline.svg" alt="Schedule" />
+                <div class="header-right-button">
+                    <img class="header-button-box-img" src="img/Receipt Outline.svg" alt="Schedule" />
                     <span>Schedule</span>
                 </div>
             </div>
@@ -37,21 +37,21 @@
     </header>
     <div class="navigation-bar d-flex justify-content-between align-items-center p-3">
         <div class="navigation-bar-left d-flex ms-3">
-            <div class="navigation-button me-4">
-                <a href="/resume" data-page="resume">
-                    <img src="img/Menu Outline.svg" alt="Menu" />
+            <div >
+                <a class="navigation-button me-4" href="/" data-page="resume">
+                    <img class="navigation-button-img" src="img/Menu Outline.svg" alt="Menu" />
                     <span>Activity</span>
                 </a>
             </div>
-            <div class="navigation-button me-4">
-                <a href="/map" data-page="map">
-                    <img src="img/Location Outline.svg" alt="Map" />
+            <div>
+                <a class="navigation-button me-4" href="/" data-page="map">
+                    <img class="navigation-button-img" src="img/Location Outline.svg" alt="Map" />
                     <span>Map</span>
                 </a>
             </div>
-            <div class="navigation-button">
-                <a href="/timer" data-page="timer">
-                    <img src="img/Time Outline.svg" alt="Time" />
+            <div>
+                <a class="navigation-button" href="/" data-page="timer">
+                    <img class="navigation-button-img" src="img/Time Outline.svg" alt="Time" />
                     <span>Time</span>
                 </a>
             </div>

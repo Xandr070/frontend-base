@@ -1,28 +1,28 @@
-body {
+.user-profile {
     background-color:#f3f3f3;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.header-left .back-button img {
+.header-left .back-button {
     margin-right: 5px;
 }
 
-.header-left span {
+.header-left .tab {
     font-weight: 400;
     font-size: 18px;
     color: #505050;
 }
 
-.header-button-box img {
+.header-button-box-img {
     height: 24px;
     width: 24px;
     margin-bottom: 8px;
     margin-inline: auto;
 }
 
-.header-button-box a, .header-button-box div {
+.header-right-button {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -36,11 +36,11 @@ body {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navigation-button img {
+.navigation-button-img {
     margin-right: 8px;
 }
 
-.navigation-button a {
+.navigation-button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,7 +80,7 @@ body {
     margin-right: 8px;
 }
 
-.comment-title a {
+.comment-title .person {
     font-size: 14px;
     text-decoration: none;
     color: #5095ec;
@@ -91,7 +91,7 @@ body {
     align-items: center;
 }
 
-.comment-title img {
+.comment-title-img {
     margin-right: 8px;
 }
 
@@ -108,7 +108,7 @@ body {
     margin-bottom: 0;
 }
 
-.comment {
+.comment-container {
     margin-top: 16px;
     display: flex;
     flex-direction: row;
@@ -118,17 +118,17 @@ body {
     color: #505050;
 }
 
-.view-comment {
+.view-post {
     display: flex;
     flex-direction: row;
     padding-bottom: 32px;
 }
 
-.view img, .com-comment img, .img {
+.view-img, .post-comment-img{
     margin-right: 8px;
 }
 
-.view, .com-comment a {
+.view, .post-comment {
     font-size: 16px;
     text-decoration: none;
     color: #505050;
@@ -136,17 +136,7 @@ body {
     align-items: center;
 }
 
-.txt p {
-    margin: 0 0 16px;
-}
-
-.com {
-    margin-left: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.inf {
+.author-name {
     color: #8f8f8f;
 }
 
@@ -164,14 +154,8 @@ body {
     align-items: center;
 }
 
-.right-other-post span {
+.right-other-post, .left-other-post {
     color: #505050;
-}
-
-.left-other-post {
-    margin: 16px 0 16px 32px;
-    color: #505050;
-    align-items: center;
 }
 
 .profile {
@@ -227,16 +211,9 @@ body {
 }
 
 .navigation-button-settings {
-    display: flex;
-    justify-content: space-between;
-}
-
-.navigation-button-settings a {
     font-size: 14px;
     text-decoration: none;
     color: #505050;
-    display: flex;
-    align-items: center;
 }
 
 .balance {
@@ -266,7 +243,7 @@ body {
     font-size: 12px;
 }
 
-.settings img, .title img {
+.settings-img {
     margin-right: 16px;
 }
 
@@ -279,11 +256,11 @@ body {
     height: 88px;
 }
 
-.save {
+.save-button {
     margin: 8px 16px 0;
 }
 
-.share button {
+.share .btn {
     width: 100%;
     padding: 8px;
     background: #5095ec;
