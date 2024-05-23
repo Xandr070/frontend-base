@@ -260,6 +260,14 @@
     margin: 8px 16px 0;
 }
 
+.share .form-outline {
+    margin: 16px;
+}
+
+#textArea {
+    color: #505050;
+}
+
 .share .btn {
     width: 100%;
     padding: 8px;
