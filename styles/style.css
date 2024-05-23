@@ -209,6 +209,15 @@ body {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
+.small-chevron {
+    width: 20px;
+    height: 20px;
+}
+
+.rotate-chevron {
+    transform: rotate(180deg);
+}
+
 .settings {
     margin-top: 32px;
 }
