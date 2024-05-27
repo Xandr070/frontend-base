@@ -1,153 +1,138 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const headerContainer = document.getElementById('header-container');
-    const contentDiv = document.querySelector('.content');
+document.addEventListener("DOMContentLoaded", () => {
+    const headerContainer = document.getElementById("header-container");
+    const contentDiv = document.querySelector(".content");
 
-    async function loadHTML(url, container) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Page not found');
-            const html = await response.text();
-            container.innerHTML = html;
-            executeScripts(container);
-        } catch (error) {
-            container.innerHTML = '<p>Error loading content.</p>';
-        }
-    }
-
-    function executeScripts(container) {
-        const scripts = container.querySelectorAll('script');
-        scripts.forEach(script => {
-            const newScript = document.createElement('script');
-            if (script.src) {
-                newScript.src = script.src;
-            } else {
-                newScript.textContent = script.textContent;
-            }
-            document.body.appendChild(newScript);
-        });
-    }
-
-    async function loadPage(page) {
-        await loadHTML(`${page}.html`, contentDiv);
-        if (page === 'map') {
-            loadYandexMapAPI();
-        }
-        startTimer();
-    }
-
-    async function initialize() {
-        await loadHTML('header.html', headerContainer);
-        document.querySelectorAll('a[data-page]').forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault();
-                const page = event.currentTarget.getAttribute('data-page');
-                history.pushState({ page }, '', `#${page}`);
-                loadPage(page);
-            });
-        });
-
-        const initialPage = location.hash.replace('#', '') || 'resume';
-        loadPage(initialPage);
-    }
-
-    window.addEventListener('popstate', event => {
-        if (event.state && event.state.page) {
-            loadPage(event.state.page);
-        }
-    });
-
-    await initialize();
+    initialize(headerContainer, contentDiv);
+    setupPopstateListener(contentDiv);
 });
 
-function loadYandexMapAPI() {
-    if (typeof ymaps !== 'undefined' && ymaps.ready) {
-        initMap();
-    } else {
-        var script = document.createElement("script");
-        script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29c2d6f1-d9c0-4b3f-a77b-857f71b0aa9f";
-        script.onload = initMap;
-        document.body.appendChild(script);
-    }
+function loadHTML(url, container, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            container.innerHTML = xhr.responseText;
+            executeScripts(container);
+            if (callback) callback();
+        } else {
+            container.innerHTML = "<p>Ошибка загрузки контента.</p>";
+        }
+    };
+    xhr.onerror = () => {
+        container.innerHTML = "<p>Ошибка загрузки контента.</p>";
+    };
+    xhr.send();
+}
+
+function executeScripts(container) {
+    container.querySelectorAll("script").forEach((script) => {
+        const newScript = document.createElement("script");
+        if (script.src) newScript.src = script.src;
+        else newScript.textContent = script.textContent;
+        document.body.appendChild(newScript).parentNode.removeChild(newScript);
+    });
+}
+
+function loadPage(page, contentDiv) {
+    loadHTML(`${page}.html`, contentDiv, () => {
+        if (page === "map") {
+            const script = document.createElement("script");
+            script.src =
+                "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29c2d6f1-d9c0-4b3f-a77b-857f71b0aa9f";
+            script.onload = initMap;
+            document.body.appendChild(script);
+        }
+        startTimer();
+        setActiveTab();
+    });
+}
+
+function setupLinks(contentDiv) {
+    document.querySelectorAll("a[data-page]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const page = event.currentTarget.dataset.page;
+            history.pushState({ page }, "", `/${page}`);
+            loadPage(page, contentDiv);
+        });
+    });
+}
+
+function initialize(headerContainer, contentDiv) {
+    loadHTML("header.html", headerContainer, () => {
+        setupLinks(contentDiv);
+        const initialPage = location.pathname.slice(1) || "resume";
+        loadPage(initialPage, contentDiv);
+    });
+}
+
+function setupPopstateListener(contentDiv) {
+    window.addEventListener("popstate", (event) => {
+        if (event.state?.page) loadPage(event.state.page, contentDiv);
+    });
 }
 
 function initMap() {
-    const mapElement = document.getElementById('map');
-    if (!mapElement) return;
-    if (mapElement.dataset.mapInitialized) {
-        return;
-    }
+    const mapElement = document.getElementById("map");
+    if (!mapElement || mapElement.dataset.mapInitialized) return;
 
-    ymaps.ready(function () {
-        var myMap = new ymaps.Map(mapElement, {
+    ymaps.ready(() => {
+        const myMap = new ymaps.Map(mapElement, {
             center: [55.751574, 37.573856],
-            zoom: 9
-        }, {
-            searchControlProvider: 'yandex#search'
+            zoom: 9,
+            searchControlProvider: "yandex#search",
         });
 
-        var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            balloonContent: 'Место жительства'
-        }, {
-            iconLayout: 'default#image',
-            iconImageSize: [30, 42],
-            iconImageOffset: [-5, -38]
-        });
+        const myPlacemark = new ymaps.Placemark(
+            myMap.getCenter(),
+            {
+                balloonContent: "Место жительства",
+            },
+            {
+                iconLayout: "default#image",
+                iconImageSize: [30, 42],
+                iconImageOffset: [-5, -38],
+            }
+        );
 
         myMap.geoObjects.add(myPlacemark);
         mapElement.dataset.mapInitialized = true;
     });
 }
 
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-        let c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
-function eraseCookie(name) {   
-    document.cookie = name+'=; Max-Age=-99999999;';  
-}
-
-async function startTimer() {
-    const timerElement = document.getElementById('timer');
+function startTimer() {
+    const timerElement = document.getElementById("timer");
     if (!timerElement) return;
 
-    let startTime = getCookie('timerStart');
+    let startTime = localStorage.getItem("timerStart");
     if (!startTime) {
         startTime = Date.now();
-        setCookie('timerStart', startTime, 1);
-    } else {
-        startTime = parseInt(startTime, 10);
+        localStorage.setItem("timerStart", startTime);
     }
 
-    function updateTimer() {
-        let timerInterval = setInterval(() => {
-            let elapsedTime = Date.now() - startTime;
-            let seconds = Math.floor((elapsedTime / 1000) % 60);
-            let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
-            let hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
-            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }, 1000);
-    }
+    const updateTimer = () =>
+        (timerElement.textContent = new Date(Date.now() - startTime)
+            .toISOString()
+            .substr(11, 8));
 
+    setInterval(updateTimer, 1000);
     updateTimer();
 
-    window.addEventListener('unload', () => {
-        eraseCookie('timerStart');
+    window.addEventListener("beforeunload", () => {
+        localStorage.removeItem("timerStart");
+    });
+}
+
+function setActiveTab() {
+    const currentPath = window.location.pathname;
+    const navigationButtons = document.querySelectorAll(".navigation-button");
+
+    navigationButtons.forEach(button => {
+        const href = button.getAttribute("href");;
+        if (href === currentPath) {
+            button.classList.add("active-tab");
+        } else {
+            button.classList.remove("active-tab");
+        }
     });
 }

@@ -1,87 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header class="d-flex justify-content-between align-items-center bg-white p-2 shadow-sm">
-        <div class="header-left d-flex align-items-center ms-3">
-            <div class="d-flex align-items-center text-decoration-none text-dark me-2">
-                <img class="back-button" src="img/Back Outline.svg" alt="Back" />
-                <span class="tab">User Pages</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <header
+            class=" header d-flex justify-content-between align-items-center bg-white p-2 shadow-sm"
+        >
+            <div class="header-primary-section d-flex align-items-center">
+                <div
+                    class="d-flex align-items-center text-decoration-none text-dark me-2"
+                >
+                    <img
+                        class="back-button"
+                        src="img/Back Outline.svg"
+                        alt="Back"
+                    />
+                    <span class="tab">User Pages</span>
+                </div>
+                <span>Profile</span>
             </div>
-            <span>Profile</span>
+            <div class="header-secondary-section d-flex align-items-center">
+                <div class="header-button-box me-4">
+                    <div class="header-secondary-section-button" data-page="statistics">
+                        <img
+                            class="header-button-box-img"
+                            src="img/Chart Outline.svg"
+                            alt="Statistic"
+                        />
+                        <span>Statistics</span>
+                    </div>
+                </div>
+                <div class="header-button-box me-4">
+                    <div class="header-secondary-section-button" data-page="invoices">
+                        <img
+                            class="header-button-box-img"
+                            src="img/Calculate Outline.svg"
+                            alt="Invoices"
+                        />
+                        <span>Invoices</span>
+                    </div>
+                </div>
+                <div class="header-button-box me-4">
+                    <div class="header-secondary-section-button" data-page="schedule">
+                        <img
+                            class="header-button-box-img"
+                            src="img/Receipt Outline.svg"
+                            alt="Schedule"
+                        />
+                        <span>Schedule</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div
+            class="navigation-bar d-flex justify-content-between align-items-center"
+        >
+            <div class="navigation-bar-primary d-flex">
+                <div class="navigation-button-active">
+                    <a
+                        class="navigation-button"
+                        href="/resume"
+                        data-page="resume">
+                        <img
+                            class="navigation-button-img"
+                            src="img/Menu Outline.svg"
+                            alt="Menu"
+                        />
+                        <span>Activity</span>
+                    </a>
+
+                    <a class="navigation-button" href="/map" data-page="map">
+                        <img
+                            class="navigation-button-img"
+                            src="img/Location Outline.svg"
+                            alt="Map"
+                        />
+                        <span>Map</span>
+                    </a>
+
+                    <a
+                        class="navigation-button"
+                        href="/timer"
+                        data-page="timer"
+                    >
+                        <img
+                            class="navigation-button-img"
+                            src="img/Time Outline.svg"
+                            alt="Time"
+                        />
+                        <span>Time</span>
+                    </a>
+                </div>
+            </div>
+            <div class="navigation-bar-secondary d-flex me-3">
+                <div class="navigation-button">
+                    <div data-page="notes">
+                        <img src="img/Docs Outline.svg" alt="Notes" />
+                        <span>Notes</span>
+                    </div>
+                </div>
+                <div class="navigation-button">
+                    <div data-page="friends">
+                        <img src="img/People Outline.svg" alt="Friends" />
+                        <span>Friends</span>
+                    </div>
+                </div>
+                <div class="navigation-button">
+                    <div data-page="photos">
+                        <img src="img/Photo Outline.svg" alt="Photos" />
+                        <span>Photos</span>
+                    </div>
+                </div>
+                <div class="navigation-button">
+                    <div data-page="settings" class="d-flex align-items-center">
+                        <img src="img/Settings Outline-1.svg" alt="Settings" />
+                        <img
+                            class="small-chevron"
+                            src="img/Chevron Down Outline.svg"
+                            alt="Arrow"
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="header-right d-flex align-items-center">
-            <div class="header-button-box me-4">
-                <div class="header-right-button">
-                    <img class="header-button-box-img" src="img/Chart Outline.svg" alt="Statistic" />
-                    <span>Statistics</span>
-                </div>
-            </div>
-            <div class="header-button-box me-4">
-                <div class="header-right-button">
-                    <img class="header-button-box-img" src="img/Calculate Outline.svg" alt="Invoices" />
-                    <span>Invoices</span>
-                </div>
-            </div>
-            <div class="header-button-box me-4">
-                <div class="header-right-button">
-                    <img class="header-button-box-img" src="img/Receipt Outline.svg" alt="Schedule" />
-                    <span>Schedule</span>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="navigation-bar d-flex justify-content-between align-items-center p-3">
-        <div class="navigation-bar-left d-flex ms-3">
-            <div >
-                <a class="navigation-button me-4" href="/" data-page="resume">
-                    <img class="navigation-button-img" src="img/Menu Outline.svg" alt="Menu" />
-                    <span>Activity</span>
-                </a>
-            </div>
-            <div>
-                <a class="navigation-button me-4" href="/" data-page="map">
-                    <img class="navigation-button-img" src="img/Location Outline.svg" alt="Map" />
-                    <span>Map</span>
-                </a>
-            </div>
-            <div>
-                <a class="navigation-button" href="/" data-page="timer">
-                    <img class="navigation-button-img" src="img/Time Outline.svg" alt="Time" />
-                    <span>Time</span>
-                </a>
-            </div>
-        </div>
-        <div class="navigation-bar-right d-flex me-3">
-            <div class="navigation-button me-4">
-                <div data-page="notes">
-                    <img src="img/Docs Outline.svg" alt="Notes" />
-                    <span>Notes</span>
-                </div>
-            </div>
-            <div class="navigation-button me-4">
-                <div data-page="friends">
-                    <img src="img/People Outline.svg" alt="Friends" />
-                    <span>Friends</span>
-                </div>
-            </div>
-            <div class="navigation-button me-4">
-                <div data-page="photos">
-                    <img src="img/Photo Outline.svg" alt="Photos" />
-                    <span>Photos</span>
-                </div>
-            </div>
-            <div class="navigation-button">
-                <div data-page="settings" class="d-flex align-items-center">
-                    <img src="img/Settings Outline-1.svg" alt="Settings" />
-                    <img class="small-chevron" src="img/Chevron Down Outline.svg" alt="Arrow" />
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+        <script src="scripts/script.js" type="text/javascript"></script>
+    </body>
 </html>
