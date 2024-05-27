@@ -1,3 +1,5 @@
+let timerStart = Date.now();
+
 document.addEventListener("DOMContentLoaded", () => {
     const headerContainer = document.getElementById("header-container");
     const contentDiv = document.querySelector(".content");
@@ -104,23 +106,13 @@ function startTimer() {
     const timerElement = document.getElementById("timer");
     if (!timerElement) return;
 
-    let startTime = localStorage.getItem("timerStart");
-    if (!startTime) {
-        startTime = Date.now();
-        localStorage.setItem("timerStart", startTime);
-    }
-
-    const updateTimer = () =>
-        (timerElement.textContent = new Date(Date.now() - startTime)
-            .toISOString()
-            .substr(11, 8));
+    const updateTimer = () => {
+        const elapsed = Date.now() - timerStart;
+        timerElement.textContent = new Date(elapsed).toISOString().substr(11, 8);
+    };
 
     setInterval(updateTimer, 1000);
     updateTimer();
-
-    window.addEventListener("beforeunload", () => {
-        localStorage.removeItem("timerStart");
-    });
 }
 
 function setActiveTab() {
@@ -128,7 +120,7 @@ function setActiveTab() {
     const navigationButtons = document.querySelectorAll(".navigation-button");
 
     navigationButtons.forEach(button => {
-        const href = button.getAttribute("href");;
+        const href = button.getAttribute("href");
         if (href === currentPath) {
             button.classList.add("active-tab");
         } else {
