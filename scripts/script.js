@@ -68,12 +68,11 @@ function setupLinks(contentDiv) {
 }
 
 function initialize(headerContainer, contentDiv) {
+    const initialPage = localStorage.getItem("currentTab") || "resume";
+    localStorage.setItem("currentTab", initialPage);
+
     loadHTML("header.html", headerContainer, () => {
         setupLinks(contentDiv);
-        const initialPage =
-            localStorage.getItem("currentTab") ||
-            location.pathname.slice(1) ||
-            "resume";
         loadPage(initialPage, contentDiv);
     });
 }
