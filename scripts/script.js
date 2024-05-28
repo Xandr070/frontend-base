@@ -8,32 +8,30 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPopstateListener(contentDiv);
 });
 
-function loadHTML(url, container, callback) {
-    fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Ошибка загрузки контента.");
-            }
-            return response.text();
-        })
-        .then((html) => {
-            container.innerHTML = html;
-            if (callback) callback();
-        })
-        .catch((error) => {
-            container.innerHTML = `<p>${error.message}</p>`;
-        });
+async function loadHTML(url, container, callback) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Ошибка загрузки контента.");
+        }
+        const html = await response.text();
+        container.innerHTML = html;
+
+        if (callback) callback();
+    } catch (error) {
+        container.innerHTML = `<p>${error.message}</p>`;
+    }
+    setActiveTab();
 }
 
-function loadPage(page, contentDiv) {
+async function loadPage(page, contentDiv) {
     saveCurrentTab(page);
     if (page === "map") {
-        loadMap(contentDiv).then(() => startTimer());
+        await loadMap(contentDiv);
     } else if (page === "timer") {
         loadTimer(contentDiv);
-        startTimer();
     } else {
-        loadHTML(`${page}.html`, contentDiv, () => {
+        await loadHTML(`${page}.html`, contentDiv, () => {
             startTimer();
         });
     }
