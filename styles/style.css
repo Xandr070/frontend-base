@@ -1,5 +1,5 @@
 .user-profile {
-    background-color:#f3f3f3;
+    background-color: #f3f3f3;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -20,6 +20,7 @@
 }
 
 .header-button-box-img {
+    align-items: center;
     margin-bottom: 8px;
     margin-inline: auto;
 }
@@ -33,7 +34,15 @@
 }
 
 .navigation-bar-secondary {
-    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+}
+
+.centered-content {
+    gap: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .navigation-bar {
@@ -45,7 +54,8 @@
     white-space: nowrap;
 }
 
-.navigation-button {
+.navigation-button,
+.navigation-button-secondary {
     padding: 0 16px;
     gap: 8px;
     display: flex;
@@ -87,7 +97,11 @@
     padding-left: 0;
 }
 
-.post, .other-post, .profile, .settings, .share {
+.post,
+.other-post,
+.profile,
+.settings,
+.share {
     background-color: #ffffff;
 }
 
@@ -103,7 +117,7 @@
 }
 
 .line {
-    border-left: 2px solid #D3D8DE;
+    border-left: 2px solid #d3d8de;
     margin-right: 8px;
 }
 
@@ -151,11 +165,13 @@
     padding-bottom: 32px;
 }
 
-.view-img, .post-comment-img{
+.view-img,
+.post-comment-img {
     margin-right: 8px;
 }
 
-.view, .post-comment {
+.view,
+.post-comment {
     font-size: 16px;
     text-decoration: none;
     color: #505050;
@@ -181,7 +197,8 @@
     align-items: center;
 }
 
-.time-other-post, .name-other-post {
+.time-other-post,
+.name-other-post {
     color: #505050;
 }
 
@@ -249,7 +266,8 @@
     color: #8f8f8f;
 }
 
-.main .base, .last .base {
+.main .base,
+.last .base {
     height: 16px;
     width: 24px;
     display: flex;
@@ -266,7 +284,8 @@
     background: #47b091;
 }
 
-.main .noti_count, .last .noti_count {
+.main .noti_count,
+.last .noti_count {
     color: #ffffff;
     font-size: 12px;
 }
@@ -313,11 +332,12 @@
 }
 
 #preloader .spinner-border {
-    border-color: #f3f3f3; 
+    border-color: #f3f3f3;
     border-top-color: #505050;
 }
 
-#map-container {
+#map-container,
+#timer-container {
     background-color: #ffffff;
     margin: 32px;
 }
@@ -327,14 +347,29 @@
     margin: 0;
 }
 
-@media (max-width: 767px) {
+.text-muted {
+    font-size: 16px;
+}
 
+.preloader {
+    height: 300px;
+}
+
+.spinner-border {
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+}
+
+@media (max-width: 767px) {
     .navigation-bar-secondary {
-        margin-left: 300px;
+        margin-left: 320px;
     }
 
     .header-primary-section {
-        margin: 0;
+        display: flex;
+        justify-content: flex-start;
+        margin: 8px;
     }
 
     .header {

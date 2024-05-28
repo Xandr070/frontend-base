@@ -1,4 +1,4 @@
-let timerStart = Date.now();
+const timerStart = Date.now();
 
 document.addEventListener("DOMContentLoaded", () => {
     const headerContainer = document.getElementById("header-container");
@@ -9,43 +9,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadHTML(url, container, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            container.innerHTML = xhr.responseText;
-            executeScripts(container);
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Ошибка загрузки контента.");
+            }
+            return response.text();
+        })
+        .then((html) => {
+            container.innerHTML = html;
             if (callback) callback();
-        } else {
-            container.innerHTML = "<p>Ошибка загрузки контента.</p>";
-        }
-    };
-    xhr.onerror = () => {
-        container.innerHTML = "<p>Ошибка загрузки контента.</p>";
-    };
-    xhr.send();
-}
-
-function executeScripts(container) {
-    container.querySelectorAll("script").forEach((script) => {
-        const newScript = document.createElement("script");
-        if (script.src) newScript.src = script.src;
-        else newScript.textContent = script.textContent;
-        document.body.appendChild(newScript).parentNode.removeChild(newScript);
-    });
+        })
+        .catch((error) => {
+            container.innerHTML = `<p>${error.message}</p>`;
+        });
 }
 
 function loadPage(page, contentDiv) {
-    loadHTML(`${page}.html`, contentDiv, () => {
-        if (page === "map") {
-            const script = document.createElement("script");
-            script.src =
-                "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29c2d6f1-d9c0-4b3f-a77b-857f71b0aa9f";
-            script.onload = initMap;
-            document.body.appendChild(script);
-        }
+    saveCurrentTab(page);
+    if (page === "map") {
+        loadMap(contentDiv).then(() => startTimer());
+    } else if (page === "timer") {
+        loadTimer(contentDiv);
         startTimer();
-        setActiveTab();
+    } else {
+        loadHTML(`${page}.html`, contentDiv, () => {
+            startTimer();
+        });
+    }
+}
+
+function saveCurrentTab(tab) {
+    localStorage.setItem("currentTab", tab);
+}
+
+async function loadMap(contentDiv) {
+    await loadHTML("map.html", contentDiv, () => {
+        const script = document.createElement("script");
+        script.src =
+            "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=29c2d6f1-d9c0-4b3f-a77b-857f71b0aa9f";
+        script.onload = initMap;
+        document.body.appendChild(script);
+    });
+}
+
+function loadTimer(contentDiv) {
+    loadHTML("timer.html", contentDiv, () => {
+        startTimer();
     });
 }
 
@@ -53,8 +63,7 @@ function setupLinks(contentDiv) {
     document.querySelectorAll("a[data-page]").forEach((link) => {
         link.addEventListener("click", (event) => {
             event.preventDefault();
-            const page = event.currentTarget.dataset.page;
-            history.pushState({ page }, "", `/${page}`);
+            const page = event.currentTarget.getAttribute("href").substr(1);
             loadPage(page, contentDiv);
         });
     });
@@ -63,14 +72,19 @@ function setupLinks(contentDiv) {
 function initialize(headerContainer, contentDiv) {
     loadHTML("header.html", headerContainer, () => {
         setupLinks(contentDiv);
-        const initialPage = location.pathname.slice(1) || "resume";
+        const initialPage =
+            localStorage.getItem("currentTab") ||
+            location.pathname.slice(1) ||
+            "resume";
         loadPage(initialPage, contentDiv);
     });
 }
 
 function setupPopstateListener(contentDiv) {
     window.addEventListener("popstate", (event) => {
-        if (event.state?.page) loadPage(event.state.page, contentDiv);
+        const pathname = location.pathname;
+        const page = pathname.substr(1);
+        loadPage(page, contentDiv);
     });
 }
 
@@ -108,7 +122,8 @@ function startTimer() {
 
     const updateTimer = () => {
         const elapsed = Date.now() - timerStart;
-        timerElement.textContent = new Date(elapsed).toISOString().substr(11, 8);
+        const timeString = new Date(elapsed).toISOString();
+        timerElement.textContent = timeString.slice(11, 19);
     };
 
     setInterval(updateTimer, 1000);
@@ -116,12 +131,18 @@ function startTimer() {
 }
 
 function setActiveTab() {
-    const currentPath = window.location.pathname;
     const navigationButtons = document.querySelectorAll(".navigation-button");
 
-    navigationButtons.forEach(button => {
-        const href = button.getAttribute("href");
-        if (href === currentPath) {
+    navigationButtons.forEach((button) => {
+        const dataPage = button.getAttribute("data-page");
+        console.log(dataPage);
+        const containerId = `${dataPage}-container`;
+        console.log(containerId);
+
+        const container = document.getElementById(containerId);
+        console.log(container);
+
+        if (container) {
             button.classList.add("active-tab");
         } else {
             button.classList.remove("active-tab");
