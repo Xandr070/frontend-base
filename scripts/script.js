@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const contentDiv = document.querySelector(".content");
 
     initialize(headerContainer, contentDiv);
-    setupPopstateListener(contentDiv);
 });
 
 async function loadHTML(url, container, callback) {
@@ -74,14 +73,6 @@ function initialize(headerContainer, contentDiv) {
     loadHTML("header.html", headerContainer, () => {
         setupLinks(contentDiv);
         loadPage(initialPage, contentDiv);
-    });
-}
-
-function setupPopstateListener(contentDiv) {
-    window.addEventListener("popstate", (event) => {
-        const pathname = location.pathname;
-        const page = pathname.substr(1);
-        loadPage(page, contentDiv);
     });
 }
 
